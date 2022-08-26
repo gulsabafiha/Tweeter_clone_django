@@ -100,6 +100,7 @@ def register(request):
 
 def profile(request, username):
     user = User.objects.get(username=username)
+    print(user)
     all_posts = Post.objects.filter(creater=user).order_by('-date_created')
     paginator = Paginator(all_posts, 10)
     page_number = request.GET.get('page')
